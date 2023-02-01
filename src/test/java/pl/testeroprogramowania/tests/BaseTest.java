@@ -15,12 +15,16 @@ public class BaseTest {
     public void setUp() {
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.get("http://seleniumdemo.com/");
     }
 
-    //@AfterMethod
-    //public void tearDown() {
-       // System.out.println("Przeglądarka się zamknęła");
-      //  driver.quit();
+    @AfterMethod
+    public void tearDown() {
+        System.out.println("Przeglądarka się zamknęła");
+        driver.quit();
+
     }
+
+}
 
