@@ -15,16 +15,16 @@ public class CheckoutTest extends BaseTest {
         Customer customer = new Customer();
 
 
-        OrderDetails orderDetailsPage =
-                new HomePage(driver).openShopPage()
+        OrderDetails orderDetailsPage = new HomePage(driver)
+                .openShopPage()
                 .openProduct("Java Selenium WebDriver")
                 .addProductToCart()
-                .viewCart().openAddresDetails()
+                .viewCart()
+                .openAddresDetails()
                 .fillAddressDetails(customer,"Simple comments");
 
         Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(), "Thank you. Your order has been received.");
-
-
+        Assert.assertEquals(orderDetailsPage.getProductName().getText(), "Java Selenium WebDriver × 1");
     }
 
 
